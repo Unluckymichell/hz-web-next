@@ -9,6 +9,8 @@ const nav = [
   { link: "#galery", id: "galery", label: "Galerie" },
 ];
 
+export const dynamic = 'force-dynamic';
+
 export default function Galerie() {
   const uploadsDir = path.join(process.cwd(), "public/Uploads");
   const images = fs.readdirSync(uploadsDir);
