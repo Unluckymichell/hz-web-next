@@ -2,8 +2,7 @@ FROM node:22-alpine AS dependencies
 
 RUN apk add --no-cache libc6-compat
 WORKDIR /home/app
-COPY package.json ./
-COPY package-lock.json ./
+COPY *.json ./
 
 RUN npm i
 
