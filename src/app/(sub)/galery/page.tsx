@@ -9,27 +9,37 @@ const nav = [
   { link: "#galery", id: "galery", label: "Galerie" },
 ];
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
+
+function ImageGrid({ uploadsDir }: { uploadsDir: string }) {
+  const images = fs.readdirSync(uploadsDir);
+
+  return (
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      {images.map((img) => (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          key={img}
+          src={`/uploads/${img}`}
+          className="rounded shadow"
+          alt="Galery Image"
+        />
+      ))}
+    </div>
+  );
+}
 
 export default function Galerie() {
   const uploadsDir = path.join(process.cwd(), "public/Uploads");
-  const images = fs.readdirSync(uploadsDir);
-
   return (
     <Navigation links={nav}>
       <ContentSection id="galery" title="Galerie">
         <h1 className="text-2xl font-bold mb-4">Galerie</h1>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {images.map((img) => (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              key={img}
-              src={`/uploads/${img}`}
-              className="rounded shadow"
-              alt="Galery Image"
-            />
-          ))}
-        </div>
+        {fs.existsSync(uploadsDir) ? (
+          <ImageGrid uploadsDir={uploadsDir} />
+        ) : (
+          <p>Error: No Galerie Directory</p>
+        )}
       </ContentSection>
     </Navigation>
   );

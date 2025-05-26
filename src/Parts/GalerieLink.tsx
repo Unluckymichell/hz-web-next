@@ -18,7 +18,7 @@ function GalerieLink() {
       <ImageContainer>
         <Image
           className="h-full w-full transition-[scale] ease-out duration-1500 object-cover hover:scale-120"
-          src={"/Images/Home/01_top.jpg"}
+          src={"/Images/Home/01_center.jpg"}
           alt="Nice Image"
           width={1920}
           height={1080}
@@ -27,7 +27,7 @@ function GalerieLink() {
       <ImageContainer>
         <Image
           className="h-full w-full transition-[scale] ease-out duration-1500 object-cover hover:scale-120"
-          src={"/Images/Home/02_top.jpg"}
+          src={"/Images/Home/02_center.jpg"}
           alt="Nice Image"
           width={1920}
           height={1080}

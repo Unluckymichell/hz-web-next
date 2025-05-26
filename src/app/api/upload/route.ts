@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { writeFile } from "fs/promises";
+import fs from "fs";
 import path from "path";
 import mathOnlyEval from "@/Utils/mathOnlyEval";
 
@@ -41,7 +42,12 @@ export async function POST(req: Request) {
   const bytes = await file.arrayBuffer();
   const buffer = Buffer.from(bytes);
 
-  const filePath = path.join(process.cwd(), "public/Uploads", Date.now() + "_" + file.name);
+  const uploadPath = path.join(process.cwd(), "public/Uploads");
+  if (!fs.existsSync(uploadPath)) {
+    fs.mkdirSync(uploadPath, { recursive: true });
+  }
+
+  const filePath = path.join(uploadPath, Date.now() + "_" + file.name.substring(0, 30));
   await writeFile(filePath, buffer);
 
   return new NextResponse("Upload successful");

@@ -5,11 +5,11 @@ function PhotoUploadLink() {
   return (
     <div>
       <h3 className="text-4xl font-bold">Du willst selber Fotos von uns hochladen?</h3>
-      <p className="text-lg">Das kannst du hier tuen!</p>
+      <p className="text-lg">Das kannst du hier tun!</p>
       <div className="my-8 w-full flex justify-center">
         <Link href={"/photoupload"}>
           <span className="w-40 h-10 bg-[var(--highlight)] in-focus:bg-[var(--highlight-text)] hover:bg-[var(--highlight-text)] flex justify-center items-center rounded-2xl">
-            Photoupload
+            Fotoupload
           </span>
         </Link>
       </div>
