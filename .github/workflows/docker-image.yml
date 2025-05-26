@@ -27,6 +27,4 @@ jobs:
         with:
           context: .
           push: true
-          tags:
-            - "ghcr.io/Unluckymichell/hz-web-next:${{ steps.package-version.outputs.current-version}}"
-            - "ghcr.io/Unluckymichell/hz-web-next:${{ steps.package-version.outputs.current-version}}"
+          tags: ghcr.io/Unluckymichell/hz-web-next:${{ steps.package-version.outputs.current-version}},ghcr.io/Unluckymichell/hz-web-next:${{ steps.package-version.outputs.current-version}}
