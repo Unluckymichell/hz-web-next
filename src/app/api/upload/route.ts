@@ -23,11 +23,6 @@ export async function POST(req: Request) {
 
   const formData = await req.formData();
   const file = formData.get("file") as File;
-  const password = formData.get("password");
-
-  if (password !== process.env.UPLOAD_PASSWORD) {
-    return new NextResponse("Unauthorized", { status: 401 });
-  }
 
   if (!file) return new NextResponse("No file uploaded", { status: 400 });
 
