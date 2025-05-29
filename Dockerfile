@@ -4,7 +4,8 @@ RUN apk add --no-cache libc6-compat
 WORKDIR /home/app
 COPY *.json ./
 
-RUN npm i
+RUN npm install -g pnpm
+RUN pnpm i
 
 FROM node:22-alpine AS builder
 
@@ -12,7 +13,8 @@ WORKDIR /home/app
 COPY --from=dependencies /home/app/node_modules ./node_modules
 COPY . .
 
-RUN npm run build
+RUN npm install -g pnpm
+RUN pnpm run build
 
 FROM node:22-alpine AS runner
 WORKDIR /home/app
