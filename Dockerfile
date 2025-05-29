@@ -25,5 +25,8 @@ COPY --from=builder /home/app/public /home/app/standalone/public
 COPY --from=builder /home/app/.next/static /home/app/standalone/.next/static
 
 EXPOSE 3000
-ENV PORT 3000
+ENV PORT=3000
+LABEL org.opencontainers.image.source=https://github.com/Unluckymichell/hz-web-next
+LABEL org.opencontainers.image.description="Hochzeits Website - Next JS"
+LABEL org.opencontainers.image.licenses=MIT
 CMD ["node", "./standalone/server.js"]
