@@ -7,9 +7,9 @@ export function EffectEventManager<
       listener: (this: Document, ev: em[T]) => unknown,
       options?: AddEventListenerOptions
     ) => void;
-  } = document
+  } = document,
+  ac: AbortController = new AbortController()
 ) {
-  const ac = new AbortController();
   const manager = () => ac.abort();
   manager.handle = <T extends keyof em>(
     type: T,
@@ -19,5 +19,15 @@ export function EffectEventManager<
     element.addEventListener(type, listener, { ...options, signal: ac.signal });
     return manager;
   };
+  manager.other = function other<em extends GlobalEventHandlersEventMap = DocumentEventMap>(oelement: {
+    addEventListener: <T extends keyof em>(
+      type: T,
+      listener: (this: Document, ev: em[T]) => unknown,
+      options?: AddEventListenerOptions
+    ) => void;
+  }) {
+    const otherManager = EffectEventManager(oelement, ac);
+    return otherManager;
+  }
   return manager;
 }

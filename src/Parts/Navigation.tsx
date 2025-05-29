@@ -21,6 +21,12 @@ function Navigation({ links, children }: NavigationProps) {
   const [showButtons, setShowButtons] = useState(false);
   const [sectionInView, setSectionsInView] = useState<string[]>([]);
 
+  const inViewNavRef = useRef<HTMLAnchorElement>(null);
+  const scrollToPagePos = () => {
+    console.log("scrollend", inViewNavRef.current);
+    inViewNavRef.current?.scrollIntoView({ behavior: "smooth", block: 'nearest', inline: 'center' });
+  }
+
   const observerhandler = useRef<IntersectionObserverCallback>(null);
   const makeObserver = () =>
     new IntersectionObserver(
@@ -43,9 +49,8 @@ function Navigation({ links, children }: NavigationProps) {
   observerhandler.current = (evl) =>
     evl.forEach((e) => {
       console.log(
-        "observer",
         e.target.id,
-        e.isIntersecting ? "on screen" : "not on screen"
+        e.isIntersecting ? "is now on screen" : "not on screen"
       );
       if (e.isIntersecting)
         setSectionsInView((l) =>
@@ -71,14 +76,17 @@ function Navigation({ links, children }: NavigationProps) {
   const scrollNavlinks = (dir: -1 | 1) => {
     ulRef.current?.scrollBy({
       behavior: "smooth",
-      left: dir*100
+      left: dir * 100
     });
   };
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => resizeCallback(), []);
   useEffect(() => {
-    return EffectEventManager(window).handle("resize", resizeCallback);
+    return EffectEventManager()
+      .handle("scrollend", scrollToPagePos)
+      .other(window)
+      .handle("resize", resizeCallback);
   }, [resizeCallback]);
 
   let isFirst = true;
@@ -134,9 +142,7 @@ function Navigation({ links, children }: NavigationProps) {
                     sectionInView.includes(nav.id) &&
                     isFirst &&
                     !(isFirst = false)
-                      ? (ref) => {
-                          ref?.scrollIntoView({ behavior: "smooth", block: 'nearest', inline: 'center' });
-                        }
+                      ? inViewNavRef
                       : undefined
                   }
                 >

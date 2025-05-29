@@ -53,25 +53,25 @@ const content = [
 
 function Ablauf() {
   return (
-    <div className="relative before:hidden md:before:block before:content-[''] before:bg-gray-500 before:h-[calc(100%-4px)] before:left-1/2 before:top-[4px] before:absolute before:w-[1px] before:-z-1">
+    <div className="relative before:hidden sm:before:block before:content-[''] before:bg-gray-500 before:h-[calc(100%-4px)] before:left-1/2 before:top-[4px] before:absolute before:w-[1px] before:-z-1">
       {content.map(({ icon, title, content }, i) => (
         <div
           key={i}
-          className={classNames("flex gap-4", {
-            "flex-row-reverse text-left": i % 2 === 0,
-            "flex-row text-right": i % 2 === 1,
+          className={classNames("flex gap-4 flex-col-reverse", {
+            "sm:flex-row-reverse sm:text-left": i % 2 === 0,
+            "sm:flex-row sm:text-right": i % 2 === 1,
           })}
         >
-          <div className="flex-1 flex flex-col gap-2 min-h-30">
+          <div className="flex-1 flex flex-col gap-2 sm:min-h-30 mb-4 sm:mb-0">
             <h3 className="font-bold text-lg">{title}</h3>
             {content.map((s, i) => (
               <p className="text-md" key={i}>{s}</p>
             ))}
           </div>
-          <div className="w-20 h-20 flex items-center justify-center text-4xl bg-[var(--highlight)] rounded-full">
+          <div className="sm:w-20 h-20 flex items-center justify-center text-4xl bg-[var(--highlight)] rounded-full">
             {icon}
           </div>
-          <div className="flex-1"></div>
+          <div className="flex-1 hidden sm:block"></div>
         </div>
       ))}
     </div>
