@@ -11,7 +11,7 @@ type UploadProgress = {
 };
 
 const NEXT_PUBLIC_MAX_UPLOAD = mathOnlyEval(
-  process.env.NEXT_PUBLIC_MAX_UPLOAD || "10 * 1024 * 1024"
+  process.env.NEXT_PUBLIC_MAX_UPLOAD || "512 * 1024 * 1024"
 );
 
 export default function ImageUpload() {
