@@ -1,4 +1,5 @@
 import Divider from "@/Components/Divider";
+import Link from "next/link";
 import React from "react";
 import { FaRegHeart as HeartIcon } from "react-icons/fa";
 
@@ -26,11 +27,13 @@ function Begruesung() {
       <p className="text-lg sm:text-xl">
         Liebe Gäste,
         <Brr />
-        zu unserer Hochzeit am 7. Juni 2025 laden wir Euch recht herzlich in die
-        schöne Eremitage in Bayreuth ein!
+        die Hochzeit mit euch am 7. Juni 2025 war unvergesslich!
         <Brr />
-        Gebt uns doch bitte zeitnah Bescheid, ob ihr diesen Tag mit uns feiern
-        wollt.
+        Das Wetter war uns gnädig, wir hatten viel Spaß, schöne Momente und gutes Essen.
+        Wir würden uns freuen wenn ihr selbst Fotografierte Bilder über unseren <Link href={"#fotos"}>Fotoupload</Link> an uns übertragt.
+        Die Galerie ist bald bereit und zeigt sowohl die Bilder unserer Fotografin wie auch eure!
+        <Brr />
+        Ein par Bilder unserer Flitterwochen werden auch zu sehen sein.
         <Brr />
         Liebe Grüße,
         <br />

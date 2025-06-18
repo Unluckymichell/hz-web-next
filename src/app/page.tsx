@@ -2,7 +2,7 @@ import ContentSection from "@/Parts/Content/ContentSection";
 import Header from "@/Parts/Header/Header";
 import HeaderContent from "@/Parts/Header/HeaderContent";
 import { getImages } from "@/Parts/Header/homeImages";
-import Navigation from "@/Parts/Navigation";
+import Navigation, { NavigationProps } from "@/Parts/Navigation";
 import Countdown from "@/Parts/Countdown";
 import Footer from "@/Parts/Footer/Footer";
 import ABC from "@/Parts/ABC";
@@ -13,16 +13,16 @@ import GalerieLink from "@/Parts/GalerieLink";
 import PhotoUploadLink from "@/Parts/PhotoUploadLink";
 import Vorstellung from "@/Parts/Vorstellung";
 
-const nav = [
+const nav: NavigationProps["links"] = [
   /*{ link: "/#vorstellung", label: "Vorstellung" },*/
   { link: "#einladung", id: "einladung", label: "Einladung" },
   { link: "#vorstellung", id: "vorstellung", label: "Vorstellung" },
+  { link: "#galerie", id: "galerie", label: "Galerie", preloadOnclick: "/galery" },
+  { link: "#fotos", id: "fotos", label: "Foto Upload", preloadOnclick: "/photoupload" },
   { link: "#countdown", id: "countdown", label: "Countdown" },
   { link: "#locations", id: "locations", label: "Location" },
   { link: "#ablauf", id: "ablauf", label: "Tagesablauf" },
   { link: "#abc", id: "abc", label: "Hochzeits-ABC" },
-  { link: "#galerie", id: "galerie", label: "Galerie" },
-  { link: "#fotos", id: "fotos", label: "Foto Upload" },
 ];
 
 export const dynamic = 'force-dynamic';
@@ -42,6 +42,12 @@ export default async function Home() {
         <ContentSection title="Vorstellung" id="vorstellung">
           <Vorstellung />
         </ContentSection>
+        <ContentSection title="Galerie" id="galerie">
+          <GalerieLink />
+        </ContentSection>
+        <ContentSection title="Foto Upload" id="fotos">
+          <PhotoUploadLink />
+        </ContentSection>
         <ContentSection title="Countdown" id="countdown">
           <Countdown />
         </ContentSection>
@@ -57,12 +63,6 @@ export default async function Home() {
         </ContentSection>
         <ContentSection title="Unser Hochzeits-ABC" id="abc">
           <ABC />
-        </ContentSection>
-        <ContentSection title="Galerie" id="galerie">
-          <GalerieLink />
-        </ContentSection>
-        <ContentSection title="Foto Upload" id="fotos">
-          <PhotoUploadLink />
         </ContentSection>
         <Footer />
       </Navigation>
