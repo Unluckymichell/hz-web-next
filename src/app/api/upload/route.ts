@@ -12,7 +12,7 @@ export const config = {
 };
 
 const NEXT_PUBLIC_MAX_UPLOAD: number = mathOnlyEval(
-  process.env.NEXT_PUBLIC_MAX_UPLOAD || "10 * 1024 * 1024"
+  process.env.NEXT_PUBLIC_MAX_UPLOAD || "512 * 1024 * 1024"
 );
 
 export async function POST(req: Request) {
