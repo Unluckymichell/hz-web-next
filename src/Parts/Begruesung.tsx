@@ -25,15 +25,17 @@ function Begruesung() {
         <Divider />
       </div>
       <p className="text-lg sm:text-xl">
-        Liebe Gäste,
+        Liebe Freundinnen und Freunde, liebe Familie,
         <Brr />
-        die Hochzeit mit euch am 7. Juni 2025 war unvergesslich!
+        die Hochzeit am 7. Juni 2025 mit euch war unvergesslich!
         <Brr />
         Das Wetter war uns gnädig, wir hatten viel Spaß, schöne Momente und gutes Essen.
-        Wir würden uns freuen wenn ihr selbst Fotografierte Bilder über unseren <Link href={"#fotos"}>Fotoupload</Link> an uns übertragt.
-        Die Galerie ist bald bereit und zeigt sowohl die Bilder unserer Fotografin wie auch eure!
+        Wir würden uns freuen, wenn ihr selbst fotografierte Bilder über unseren <Link href={"#fotos"}>Fotoupload</Link> an uns übertragt.
+        Die Galerie ist bald bereit und zeigt sowohl die Bilder unserer Fotografin, als auch eure!
         <Brr />
-        Ein par Bilder unserer Flitterwochen werden auch zu sehen sein.
+        Ein paar Bilder unserer Flitterwochen werden auch zu sehen sein.
+        <br />
+        Vielen Dank, ihr habt unsere Hochzeit zu dem gemacht, was sie war - ein unvergesslicher Tag mit viel Liebe und Spaß!
         <Brr />
         Liebe Grüße,
         <br />
