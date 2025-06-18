@@ -2,7 +2,7 @@
 import { EffectEventManager } from "@/Utils/EffectEventManager";
 import classNames from "classnames";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { createContext, useCallback, useEffect, useRef, useState } from "react";
 import { FaCaretLeft, FaCaretRight } from "react-icons/fa";
 
