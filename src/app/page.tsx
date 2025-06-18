@@ -2,7 +2,7 @@ import ContentSection from "@/Parts/Content/ContentSection";
 import Header from "@/Parts/Header/Header";
 import HeaderContent from "@/Parts/Header/HeaderContent";
 import { getImages } from "@/Parts/Header/homeImages";
-import Navigation from "@/Parts/Navigation";
+import Navigation, { NavigationProps } from "@/Parts/Navigation";
 import Countdown from "@/Parts/Countdown";
 import Footer from "@/Parts/Footer/Footer";
 import ABC from "@/Parts/ABC";
@@ -13,16 +13,15 @@ import GalerieLink from "@/Parts/GalerieLink";
 import PhotoUploadLink from "@/Parts/PhotoUploadLink";
 import Vorstellung from "@/Parts/Vorstellung";
 
-const nav = [
-  /*{ link: "/#vorstellung", label: "Vorstellung" },*/
+const nav: NavigationProps["links"] = [
   { link: "#einladung", id: "einladung", label: "Einladung" },
   { link: "#vorstellung", id: "vorstellung", label: "Vorstellung" },
-  { link: "#countdown", id: "countdown", label: "Countdown" },
+  { link: "#galerie", id: "galerie", label: "Galerie", preloadOnclick: "/galery" },
+  { link: "#fotos", id: "fotos", label: "Foto Upload", preloadOnclick: "/photoupload" },
   { link: "#locations", id: "locations", label: "Location" },
   { link: "#ablauf", id: "ablauf", label: "Tagesablauf" },
   { link: "#abc", id: "abc", label: "Hochzeits-ABC" },
-  { link: "#galerie", id: "galerie", label: "Galerie" },
-  { link: "#fotos", id: "fotos", label: "Foto Upload" },
+  { link: "#countdown", id: "countdown", label: "Countdown" },
 ];
 
 export const dynamic = 'force-dynamic';
@@ -42,8 +41,11 @@ export default async function Home() {
         <ContentSection title="Vorstellung" id="vorstellung">
           <Vorstellung />
         </ContentSection>
-        <ContentSection title="Countdown" id="countdown">
-          <Countdown />
+        <ContentSection title="Galerie" id="galerie">
+          <GalerieLink />
+        </ContentSection>
+        <ContentSection title="Foto Upload" id="fotos">
+          <PhotoUploadLink />
         </ContentSection>
         <ContentSection
           title="Location"
@@ -58,11 +60,8 @@ export default async function Home() {
         <ContentSection title="Unser Hochzeits-ABC" id="abc">
           <ABC />
         </ContentSection>
-        <ContentSection title="Galerie" id="galerie">
-          <GalerieLink />
-        </ContentSection>
-        <ContentSection title="Foto Upload" id="fotos">
-          <PhotoUploadLink />
+        <ContentSection title="Countdown" id="countdown">
+          <Countdown />
         </ContentSection>
         <Footer />
       </Navigation>

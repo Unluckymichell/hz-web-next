@@ -2,14 +2,16 @@
 import { EffectEventManager } from "@/Utils/EffectEventManager";
 import classNames from "classnames";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { createContext, useCallback, useEffect, useRef, useState } from "react";
 import { FaCaretLeft, FaCaretRight } from "react-icons/fa";
 
-interface NavigationProps extends React.PropsWithChildren {
+export interface NavigationProps extends React.PropsWithChildren {
   links: {
     link: string;
     id?: string;
     label: string;
+    preloadOnclick?: string;
   }[];
 }
 
@@ -95,6 +97,8 @@ function Navigation({ links, children }: NavigationProps) {
       .handle("resize", resizeCallback);
   }, [resizeCallback]);
 
+  const router = useRouter();
+
   let isFirst = true;
   return (
     <IntersectionObserverContext.Provider value={observer}>
@@ -146,12 +150,17 @@ function Navigation({ links, children }: NavigationProps) {
                 >
                   <Link
                     href={nav.link}
+                    {...(nav.preloadOnclick ? {
+                      onClick: () => {
+                        router.prefetch(nav.preloadOnclick!);
+                      }
+                    } : {})}
                     className="text-gray-700 font-extrabold select-none hover:scale-110"
                     ref={
                       nav.id &&
-                      sectionInView.includes(nav.id) &&
-                      isFirst &&
-                      !(isFirst = false)
+                        sectionInView.includes(nav.id) &&
+                        isFirst &&
+                        !(isFirst = false)
                         ? inViewNavRef
                         : undefined
                     }
