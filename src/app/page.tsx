@@ -14,15 +14,14 @@ import PhotoUploadLink from "@/Parts/PhotoUploadLink";
 import Vorstellung from "@/Parts/Vorstellung";
 
 const nav: NavigationProps["links"] = [
-  /*{ link: "/#vorstellung", label: "Vorstellung" },*/
   { link: "#einladung", id: "einladung", label: "Einladung" },
   { link: "#vorstellung", id: "vorstellung", label: "Vorstellung" },
   { link: "#galerie", id: "galerie", label: "Galerie", preloadOnclick: "/galery" },
   { link: "#fotos", id: "fotos", label: "Foto Upload", preloadOnclick: "/photoupload" },
-  { link: "#countdown", id: "countdown", label: "Countdown" },
   { link: "#locations", id: "locations", label: "Location" },
   { link: "#ablauf", id: "ablauf", label: "Tagesablauf" },
   { link: "#abc", id: "abc", label: "Hochzeits-ABC" },
+  { link: "#countdown", id: "countdown", label: "Countdown" },
 ];
 
 export const dynamic = 'force-dynamic';
@@ -48,9 +47,6 @@ export default async function Home() {
         <ContentSection title="Foto Upload" id="fotos">
           <PhotoUploadLink />
         </ContentSection>
-        <ContentSection title="Countdown" id="countdown">
-          <Countdown />
-        </ContentSection>
         <ContentSection
           title="Location"
           id="locations"
@@ -63,6 +59,9 @@ export default async function Home() {
         </ContentSection>
         <ContentSection title="Unser Hochzeits-ABC" id="abc">
           <ABC />
+        </ContentSection>
+        <ContentSection title="Countdown" id="countdown">
+          <Countdown />
         </ContentSection>
         <Footer />
       </Navigation>
