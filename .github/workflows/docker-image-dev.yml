@@ -1,0 +1,26 @@
+name: Build and Push Docker Image for Dev Branch
+on:
+  push:
+    branches:
+    - dev
+jobs:
+  build_and_push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Log in to Github Packages
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build Image
+        run: |
+          docker build . --tag ghcr.io/unluckymichell/hz-web-next:dev
+      - name: Push Image as Dev
+        run: |
+          docker push ghcr.io/unluckymichell/hz-web-next:dev
