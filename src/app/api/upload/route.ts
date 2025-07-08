@@ -3,6 +3,7 @@ import { writeFile } from "fs/promises";
 import fs from "fs";
 import path from "path";
 import mathOnlyEval from "@/Utils/mathOnlyEval";
+import { allowedMimeTypes, mimeTypeToFileExtension } from "./types";
 
 export const config = {
   api: {
@@ -10,26 +11,6 @@ export const config = {
     responseLimit: false,
   },
 };
-
-export const allowedMimeTypes = [
-  "image/jpeg",
-  "image/png",
-  "image/gif",
-  "image/webp",
-  "image/svg+xml",
-  "image/bmp",
-  "image/tiff",
-] as const;
-
-export const mimeTypeToFileExtension: Record<typeof allowedMimeTypes[number], string> = {
-  "image/jpeg": ".jpg",
-  "image/png": ".png",
-  "image/gif": ".gif",
-  "image/webp": ".webp",
-  "image/svg+xml": ".svg",
-  "image/bmp": ".bmp",
-  "image/tiff": ".tiff",
-} as const;
 
 export async function POST(req: Request) {
   const NEXT_PUBLIC_MAX_UPLOAD: number = mathOnlyEval(

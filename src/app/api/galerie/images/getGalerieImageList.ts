@@ -1,5 +1,5 @@
 import { readdir, readFile, writeFile } from "fs/promises";
-import { mimeTypeToFileExtension } from "../../upload/route";
+import { mimeTypeToFileExtension } from "../../upload/types";
 import { ApiGaleryImagesResponse, ImageMetadata } from "./types";
 import imageSize from "image-size";
 import { ExifImage } from "exif";

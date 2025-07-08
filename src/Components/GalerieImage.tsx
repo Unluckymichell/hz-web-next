@@ -6,9 +6,6 @@ import Image from "next/image";
 import { CSSProperties } from "react";
 
 export default function GalerieImage({ useViewer, className, img, style }: { useViewer?: ApiGaleryImagesResponse, style?: CSSProperties, className: string, img: ApiGaleryImagesResponse[number] }) {
-    const width = img.metadata.exif?.ImageWidth || img.metadata.imgSize?.width || undefined
-    const height = img.metadata.exif?.ImageHeight || img.metadata.imgSize?.height || undefined
-    if (!width || !height) return;
     return <Image
         onClick={useViewer ? () => {
             const findIndex = useViewer.findIndex(fi => fi.image == img.image);
@@ -24,8 +21,8 @@ export default function GalerieImage({ useViewer, className, img, style }: { use
         } : undefined}
         key={img.image}
         src={img.image}
-        width={width}
-        height={height}
+        width={img.metadata.imgSize.width}
+        height={img.metadata.imgSize.height}
         className={className}
         style={style}
         alt={img.metadata.description}
