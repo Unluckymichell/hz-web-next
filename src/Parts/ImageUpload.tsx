@@ -1,7 +1,7 @@
 "use client";
 import mathOnlyEval from "@/Utils/mathOnlyEval";
 import classNames from "classnames";
-import { useMemo, useRef, useState } from "react";
+import { useMemo, useState } from "react";
 
 type UploadProgress = {
   file: File;

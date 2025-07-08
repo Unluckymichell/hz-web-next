@@ -1,11 +1,11 @@
 "use client"
 
-import { ApiGaleryImagesResponse } from "@/app/api/galerie/images/route";
+import { ApiGaleryImagesResponse } from "@/app/api/galerie/images/types";
 import ImageViewer from "awesome-image-viewer";
 import Image from "next/image";
+import { CSSProperties } from "react";
 
-export default function GalerieImage({ useViewer, className, img, style }: { useViewer?: ApiGaleryImagesResponse, style?: any, className: string, img: ApiGaleryImagesResponse[number] }) {
-    // eslint-disable-next-line @next/next/no-img-element
+export default function GalerieImage({ useViewer, className, img, style }: { useViewer?: ApiGaleryImagesResponse, style?: CSSProperties, className: string, img: ApiGaleryImagesResponse[number] }) {
     const width = img.metadata.exif?.ImageWidth || img.metadata.imgSize?.width || undefined
     const height = img.metadata.exif?.ImageHeight || img.metadata.imgSize?.height || undefined
     if (!width || !height) return;

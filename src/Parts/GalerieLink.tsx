@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ImageStackContainer } from "../Components/ImageContainer";
-import { getListOfAlbumWithCoverImage } from "@/app/api/galerie/albums/route";
+import { getListOfAlbumWithCoverImage } from "@/app/api/galerie/albums/getListOfAlbumWithCoverImage";
 
 export function GalerieLinkFallback() {
   return (

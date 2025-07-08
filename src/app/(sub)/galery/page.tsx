@@ -1,10 +1,10 @@
-import { getGalerieImageList, type ApiGaleryImagesResponse } from "@/app/api/galerie/images/route";
+import { type ApiGaleryImagesResponse } from "@/app/api/galerie/images/types";
+import { getGalerieImageList } from "@/app/api/galerie/images/getGalerieImageList";
 import GalerieImage from "@/Components/GalerieImage";
 import { ImageStackContainer } from "@/Components/ImageContainer";
 import ContentSection from "@/Parts/Content/ContentSection";
 import { GalerieImageGrid } from "@/Parts/GalerieImageGrid";
 import Navigation from "@/Parts/Navigation";
-import { SearchParams } from "next/dist/server/request/search-params";
 import Link from "next/link";
 
 const nav = [
@@ -15,7 +15,7 @@ const nav = [
 
 export const dynamic = "force-dynamic";
 
-export default async function Galerie({ searchParams }: { searchParams: SearchParams }) {
+export default async function Galerie({ searchParams }: { searchParams: Promise<{ album?: string | string[] }> }) {
   let { album: onlyAlbum } = await searchParams;
   if (Array.isArray(onlyAlbum)) onlyAlbum = onlyAlbum[0];
 
@@ -23,7 +23,7 @@ export default async function Galerie({ searchParams }: { searchParams: SearchPa
   if (onlyAlbum) images =
     images.filter(i => i.metadata.album == onlyAlbum);
 
-  let albumGroupedImages = images.reduce((acc, img) => {
+  const albumGroupedImages = images.reduce((acc, img) => {
     const album = img.metadata.album || "Unassigned";
     if (!acc[album]) {
       acc[album] = [];
