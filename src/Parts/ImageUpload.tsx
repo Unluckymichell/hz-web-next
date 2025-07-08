@@ -1,7 +1,7 @@
 "use client";
 import mathOnlyEval from "@/Utils/mathOnlyEval";
 import classNames from "classnames";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 type UploadProgress = {
   file: File;
@@ -10,11 +10,14 @@ type UploadProgress = {
   errorMsg: string;
 };
 
-const NEXT_PUBLIC_MAX_UPLOAD = mathOnlyEval(
-  process.env.NEXT_PUBLIC_MAX_UPLOAD || "512 * 1024 * 1024"
-);
-
 export default function ImageUpload() {
+  // Calculate the maximum upload size from environment variable or default value
+  // Using mathOnlyEval to safely evaluate the expression
+  // This allows for dynamic configuration of the maximum upload size
+  const NEXT_PUBLIC_MAX_UPLOAD = useMemo(() => mathOnlyEval(
+    process.env.NEXT_PUBLIC_MAX_UPLOAD || "512 * 1024 * 1024"
+  ), []);
+
   const [progressList, setProgressList] = useState<UploadProgress[]>([]);
 
   const handleFilesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,9 +29,8 @@ export default function ImageUpload() {
         status: file.size > NEXT_PUBLIC_MAX_UPLOAD ? "error" : "waiting",
         errorMsg:
           file.size > NEXT_PUBLIC_MAX_UPLOAD
-            ? `File is to large! Only ${
-                NEXT_PUBLIC_MAX_UPLOAD / 1024 / 1024
-              } MB allowed`
+            ? `File is to large! Only ${NEXT_PUBLIC_MAX_UPLOAD / 1024 / 1024
+            } MB allowed`
             : "",
       }))
     );
