@@ -87,6 +87,22 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.text-border-white-1 {
+  -webkit-text-stroke: var(--color-white) 0.25px;
+}
+
+.text-border-white-4 {
+  -webkit-text-stroke: var(--color-white) 1px;
+}
+
+.text-border-black-1 {
+  -webkit-text-stroke: var(--color-black) 0.25px;
+}
+
+.text-border-black-4 {
+  -webkit-text-stroke: var(--color-black) 1px;
+}
+
 .text-border-1 {
   -webkit-text-stroke: var(--color-gray-400) 0.25px;
 }

@@ -9,9 +9,10 @@ import ABC from "@/Parts/ABC";
 import Locations from "@/Parts/Locations";
 import Ablauf from "@/Parts/Ablauf";
 import Begruesung from "@/Parts/Begruesung";
-import GalerieLink from "@/Parts/GalerieLink";
+import GalerieLink, { GalerieLinkFallback } from "@/Parts/GalerieLink";
 import PhotoUploadLink from "@/Parts/PhotoUploadLink";
 import Vorstellung from "@/Parts/Vorstellung";
+import { Suspense } from "react";
 
 const nav: NavigationProps["links"] = [
   { link: "#einladung", id: "einladung", label: "Einladung" },
@@ -42,7 +43,9 @@ export default async function Home() {
           <Vorstellung />
         </ContentSection>
         <ContentSection title="Galerie" id="galerie">
-          <GalerieLink />
+          <Suspense fallback={<GalerieLinkFallback/>}>
+            <GalerieLink />
+          </Suspense>
         </ContentSection>
         <ContentSection title="Foto Upload" id="fotos">
           <PhotoUploadLink />
