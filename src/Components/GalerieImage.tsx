@@ -23,7 +23,7 @@ export default function GalerieImage({ useViewer, className, img, style }: { use
                         iconSize: "18px auto",
                         onSelect: (() => {
                             const image = useViewer[iv["currentSelected"]];
-                            var link = document.createElement('a');
+                            const link = document.createElement('a');
                             link.href = image.fullsize;
                             link.download = image.fullsize.split("/").pop() || "Image.jpg";
                             document.body.appendChild(link);
