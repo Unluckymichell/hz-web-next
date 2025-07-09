@@ -12,7 +12,7 @@ export default function GalerieImage({ useViewer, className, img, style }: { use
             new ImageViewer({
                 images: useViewer.map((i) => ({
                     mainUrl: i.fullsize,
-                    thumbnailUrl: i.image,
+                    thumbnailUrl: `/_next/image?url=${encodeURIComponent(i.image)}&w=256&q=75`,
                     description: i.metadata.description,
                 })),
                 currentSelected: findIndex
