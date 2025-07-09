@@ -1,4 +1,4 @@
-name: Build and Push Docker Image for Dev Branch
+name: Test Build Docker Image
 on:
   push:
     branches:
@@ -21,6 +21,3 @@ jobs:
       - name: Build Image
         run: |
           docker build . --tag ghcr.io/unluckymichell/hz-web-next:dev
-      - name: Push Image as Dev
-        run: |
-          docker push ghcr.io/unluckymichell/hz-web-next:dev
