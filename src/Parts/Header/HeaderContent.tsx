@@ -16,7 +16,7 @@ function HeaderContent() {
             <Divider />
         </div>
         <TitleText className="sm:text-3xl text-2xl text-center">
-            Sind seit 07.06.2025 glücklich verheiratet!
+            sind seit 07.06.2025 glücklich verheiratet!
         </TitleText>
     </div>
 }
