@@ -6,7 +6,7 @@ import { FaHeart } from 'react-icons/fa'
 function HeaderContent() {
     return <div className='h-full flex flex-col gap-6 justify-center items-center font-(family-name:--font-lobster)'>
         <TitleText className="sm:text-4xl text-3xl text-center">
-            Corinna und Michael heiraten!
+            Corinna und Michael
         </TitleText>
         <div className="flex items-center gap-2 w-[70%]">
             <Divider />
@@ -16,7 +16,7 @@ function HeaderContent() {
             <Divider />
         </div>
         <TitleText className="sm:text-3xl text-2xl text-center">
-            Am 07.06.2025 ist es soweit!
+            Sind seit 07.06.2025 glücklich verheiratet!
         </TitleText>
     </div>
 }
