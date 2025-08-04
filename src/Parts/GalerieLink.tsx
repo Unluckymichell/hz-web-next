@@ -35,8 +35,8 @@ async function GalerieLink() {
             className="h-full w-full transition-[scale] ease-out duration-1500 object-cover hover:scale-120"
             src={albums[a].image}
             alt="Galerie Cover Image"
-            width={albums[a].metadata.imgSize.width}
-            height={albums[a].metadata.imgSize.height}
+            width={albums[a].metadata.imgSize.width/3}
+            height={albums[a].metadata.imgSize.height/3}
           />
           <p className="relative bottom-1/2 left-1/2 -translate-1/2 pointer-events-none text-white text-border-black-4 font-extrabold text-xl">{a}</p>
         </ImageStackContainer></Link>)

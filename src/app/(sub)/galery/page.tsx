@@ -71,7 +71,7 @@ export default async function Galerie({ searchParams }: { searchParams: Promise<
             })}
         </div>
 
-        <GalerieImageGrid albumGroupedImages={albumGroupedImages} allImages={images} />
+        {onlyAlbum ? <GalerieImageGrid albumGroupedImages={albumGroupedImages} allImages={images} /> : null}
       </ContentSection>
     </Navigation>
   );

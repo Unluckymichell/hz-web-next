@@ -11,6 +11,8 @@ export type ImageMetadata = {
     };
 };
 
+export type StoredImageMetadata = Omit<ImageMetadata, 'album'> 
+
 export type ApiGaleryImagesResponse = {
     image: string;
     fullsize: string;
