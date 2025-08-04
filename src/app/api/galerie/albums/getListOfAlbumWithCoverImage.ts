@@ -35,6 +35,8 @@ import { mimeTypeToFileExtension } from "../../upload/types";
 //     return imageData;
 // }
 
+// TODO: Add download album
+
 export async function getListOfAlbumWithCoverImage(): Promise<ApiGaleryAlbumsResponse> {
     const dirs = await readdir("public/Galerie", { withFileTypes: true })
         .then(files => files.filter(file => file.isDirectory()));
