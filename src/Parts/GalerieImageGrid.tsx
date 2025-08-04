@@ -18,6 +18,7 @@ export function GalerieImageGrid({ albumGroupedImages, allImages }: { albumGroup
                   img={img}
                   key={img.image}
                   className="rounded shadow"
+                  setHeight={150}
                   style={{
                     height: "150px",
                     width: "auto",

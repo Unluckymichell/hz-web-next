@@ -5,7 +5,7 @@ import ImageViewer from "awesome-image-viewer";
 import Image from "next/image";
 import { CSSProperties } from "react";
 
-export default function GalerieImage({ useViewer, className, img, style }: { useViewer?: ApiGaleryImagesResponse, style?: CSSProperties, className: string, img: ApiGaleryImagesResponse[number] }) {
+export default function GalerieImage({ useViewer, className, img, style, resolutionReductionFactor = 1, setWidth, setHeight }: { useViewer?: ApiGaleryImagesResponse, style?: CSSProperties, className: string, img: ApiGaleryImagesResponse[number], resolutionReductionFactor?: number, setWidth?: number, setHeight?: number }) {
     return <Image
         onClick={useViewer ? () => {
             const findIndex = useViewer.findIndex(fi => fi.image == img.image);
@@ -37,8 +37,24 @@ export default function GalerieImage({ useViewer, className, img, style }: { use
         } : undefined}
         key={img.image}
         src={img.image}
-        width={img.metadata.imgSize.width}
-        height={img.metadata.imgSize.height}
+        width={
+            setWidth
+                ? setWidth
+                : (
+                    setHeight
+                        ? (img.metadata.imgSize.width / img.metadata.imgSize.height) * setHeight
+                        : img.metadata.imgSize.width / resolutionReductionFactor
+                )
+        }
+        height={
+            setWidth
+                ? (img.metadata.imgSize.height / img.metadata.imgSize.width) * setWidth
+                : (
+                    setHeight
+                        ? setHeight
+                        : img.metadata.imgSize.height / resolutionReductionFactor
+                )
+        }
         className={className}
         style={style}
         alt={img.metadata.description}
